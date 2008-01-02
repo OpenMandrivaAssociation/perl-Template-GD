@@ -16,6 +16,7 @@ BuildRequires:  perl-devel
 %endif
 BuildRequires:  perl(Template)
 buildArch:      noarch
+buildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 The Template-GD distribution provides a number of Template Toolkit plugin
