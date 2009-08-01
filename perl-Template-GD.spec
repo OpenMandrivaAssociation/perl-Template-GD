@@ -1,22 +1,22 @@
-%define module  Template-GD
-%define name    perl-%{module}
-%define version 2.66
-%define release %mkrel 4
+%define upstream_name    Template-GD
+%define upstream_version 2.66
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
-Summary:        GD plugin(s) for the Template Toolkit
-License:        Artistic
-group:          Development/Perl
-Url:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Template/%{module}-%{version}.tar.bz2
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    GD plugin(s) for the Template Toolkit
+License:    Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:  perl-devel
 %endif
 BuildRequires:  perl(Template)
 buildArch:      noarch
-buildRoot:      %{_tmppath}/%{name}-%{version}
+buildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 The Template-GD distribution provides a number of Template Toolkit plugin
@@ -32,7 +32,7 @@ Template module or http://template-toolkit.org. For information on using
 plugins, see Template::Plugins and "USE" in Template::Manual::Directives.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -53,5 +53,3 @@ rm -rf %{buildroot}
 %doc README
 %{perl_vendorlib}/Template
 %{_mandir}/*/*
-
-
