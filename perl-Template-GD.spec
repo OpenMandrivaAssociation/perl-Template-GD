@@ -1,22 +1,19 @@
 %define upstream_name    Template-GD
 %define upstream_version 2.66
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
-Summary:    GD plugin(s) for the Template Toolkit
-License:    Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.bz2
+Summary:	GD plugin(s) for the Template Toolkit
+License:	Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.bz2
 
-%if %{mdkversion} < 1010
-BuildRequires:  perl-devel
-%endif
-BuildRequires:  perl(Template)
-buildArch:      noarch
-buildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Template)
+BuildArch:	noarch
 
 %description
 The Template-GD distribution provides a number of Template Toolkit plugin
@@ -35,21 +32,46 @@ plugins, see Template::Plugins and "USE" in Template::Manual::Directives.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
-%{__make} test
+make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc README
 %{perl_vendorlib}/Template
 %{_mandir}/*/*
+
+
+%changelog
+* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 2.660.0-1mdv2010.0
++ Revision: 405530
+- rebuild using %%perl_convert_version
+
+* Thu Jul 31 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.66-4mdv2009.0
++ Revision: 258460
+- rebuild
+
+* Thu Jul 24 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.66-3mdv2009.0
++ Revision: 246500
+- rebuild
+
+* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 2.66-1mdv2008.1
++ Revision: 140717
+- restore BuildRoot
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Sun Jan 21 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.66-1mdv2007.0
++ Revision: 111253
+- Import perl-Template-GD
+
+* Sun Jan 21 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.66-1mdv2007.1
+- first mdv release
+
