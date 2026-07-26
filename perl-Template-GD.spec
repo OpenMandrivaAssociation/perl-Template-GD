@@ -1,15 +1,13 @@
 %define upstream_name    Template-GD
-%define upstream_version 2.66
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	5
+Version:	2.66
+Release:	6
 
 Summary:	GD plugin(s) for the Template Toolkit
 License:	Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Template-GD
-Source0:	https://cpan.metacpan.org/authors/id/A/AB/ABW/Template-GD-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/A/AB/ABW/Template-GD-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -30,7 +28,7 @@ Template module or http://template-toolkit.org. For information on using
 plugins, see Template::Plugins and "USE" in Template::Manual::Directives.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -51,9 +49,7 @@ make test
 %changelog
 * Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 2.660.0-1mdv2010.0
 + Revision: 405530
-- rebuild using %%perl_convert_version
-
-* Thu Jul 31 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.66-4mdv2009.0
+- rebuild using %2.66 Thu Jul 31 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.66-4mdv2009.0
 + Revision: 258460
 - rebuild
 
