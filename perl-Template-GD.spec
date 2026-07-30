@@ -1,13 +1,14 @@
 %define upstream_name    Template-GD
+%define upstream_version 2.66
 Name:		perl-%{upstream_name}
 Version:	2.66
-Release:	6
+Release:	1
 
 Summary:	GD plugin(s) for the Template Toolkit
 License:	Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Template-GD
-Source0:	https://cpan.metacpan.org/authors/id/A/AB/ABW/Template-GD-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/A/AB/ABW/Template-GD-2.66.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -45,30 +46,4 @@ make test
 %{perl_vendorlib}/Template
 %{_mandir}/*/*
 
-
-%changelog
-* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 2.660.0-1mdv2010.0
-+ Revision: 405530
-- rebuild using %2.66 Thu Jul 31 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.66-4mdv2009.0
-+ Revision: 258460
-- rebuild
-
-* Thu Jul 24 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.66-3mdv2009.0
-+ Revision: 246500
-- rebuild
-
-* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 2.66-1mdv2008.1
-+ Revision: 140717
-- restore BuildRoot
-
-  + Thierry Vignaud <tvignaud@mandriva.com>
-    - kill re-definition of %%buildroot on Pixel's request
-
-
-* Sun Jan 21 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.66-1mdv2007.0
-+ Revision: 111253
-- Import perl-Template-GD
-
-* Sun Jan 21 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.66-1mdv2007.1
-- first mdv release
 
